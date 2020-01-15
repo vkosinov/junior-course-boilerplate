@@ -6,7 +6,7 @@ import { ProductList } from '../ProductList';
 
 import products from '../../products';
 
-const App = () => {
+export const App = () => {
   return (
     <Container>
       <Title>Список товаров</Title>
@@ -15,5 +15,3 @@ const App = () => {
     </Container>
   );
 };
-
-export { App };

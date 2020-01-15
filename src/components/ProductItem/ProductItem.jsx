@@ -5,7 +5,16 @@ import s from './styled.module.css';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
 
-function ProductItem({ isInStock, img, title, price, subPriceContent, maxRating, rating, ratingComponent }) {
+export function ProductItem({
+  isInStock,
+  img,
+  title,
+  price,
+  subPriceContent,
+  maxRating,
+  rating,
+  ratingComponent,
+}) {
   return (
     <div className={cx(s.goods, { [s.goodsNone]: !isInStock })}>
       <div className={cx(s.goodsType, { [s.goodsTypeNone]: !isInStock })}>
@@ -40,5 +49,3 @@ ProductItem.propTypes = {
   ratingComponent: pt.func.isRequired,
   isInStock: pt.bool.isRequired,
 };
-
-export { ProductItem };

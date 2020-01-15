@@ -9,7 +9,7 @@ const ratingComponent = ({ isFilled }) => {
   return <div className={isFilled ? 'starFill' : ''} />;
 };
 
-const ProductList = ({ items }) => {
+export const ProductList = ({ items }) => {
   return (
     <Wrap>
       {items.map(item => (
@@ -47,5 +47,3 @@ ProductList.propTypes = {
 ProductList.defaultProps = {
   items: [],
 };
-
-export { ProductList };
