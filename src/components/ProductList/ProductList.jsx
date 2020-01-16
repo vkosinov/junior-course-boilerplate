@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ProductItem } from '../ProductItem';
+import ProductItem from 'csssr-school-product-card';
 
-import { Wrap } from './styled';
+import s from './styles.module.css';
 
 const ratingComponent = ({ isFilled }) => {
   return <div className={isFilled ? 'starFill' : ''} />;
@@ -11,20 +11,22 @@ const ratingComponent = ({ isFilled }) => {
 
 export const ProductList = ({ items }) => {
   return (
-    <Wrap>
+    <div className={s.wrap}>
       {items.map(item => (
-        <ProductItem
-          key={item.id}
-          isInStock={item.isInStock}
-          img={item.img}
-          title={item.name}
-          price={item.price}
-          maxRating={5}
-          rating={item.rating}
-          ratingComponent={ratingComponent}
-        />
+        <div className={s.wrapItem} key={item.id}>
+          <ProductItem
+            isInStock={item.isInStock}
+            img={item.img}
+            title={item.name}
+            price={item.price}
+            subPriceContent={item.subPriceContent}
+            maxRating={5}
+            rating={item.rating}
+            ratingComponent={ratingComponent}
+          />
+        </div>
       ))}
-    </Wrap>
+    </div>
   );
 };
 
