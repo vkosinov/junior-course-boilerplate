@@ -4,16 +4,12 @@ import PropTypes from 'prop-types';
 import ProductItem from 'csssr-school-product-card';
 import { LogRender } from '../LogRender';
 
-import { getPrice } from '../../utils';
+import { getSelectedProduct } from '../../utils';
 
 import s from './styles.module.css';
 
 const ratingComponent = ({ isFilled }) => {
   return <div className={isFilled ? 'starFill' : ''} />;
-};
-
-const getSelectedProduct = (items, maxPrice, minPrice) => {
-  return items.filter(item => getPrice(item.price) <= minPrice && getPrice(item.price) >= maxPrice);
 };
 
 export class ProductList extends LogRender {
