@@ -8,7 +8,7 @@ import s from './styles.module.css';
 export class Button extends LogRender {
   render() {
     return (
-      <button onClick={event => this.props.onClick(event)} className={s.button} type="button">
+      <button onClick={this.props.onClick} className={s.button} type="button">
         {this.props.value}
       </button>
     );
