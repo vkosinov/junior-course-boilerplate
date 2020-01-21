@@ -5,6 +5,7 @@ import { Container } from '../Container';
 import { ProductList } from '../ProductList';
 import { Filter } from '../Filter';
 
+import { maxBy, minBy } from 'csssr-school-utils';
 import { getPrice } from '../../utils';
 
 import s from './styles.module.css';
@@ -13,9 +14,9 @@ import products from '../../products';
 
 const priceArr = products.map(item => getPrice(item.price));
 
-const maxPrice = priceArr.sort((a, b) => b - a)[0];
+const maxPrice = maxBy(item => item, priceArr);
 
-const minPrice = priceArr.sort((a, b) => a - b)[0];
+const minPrice = minBy(item => item, priceArr);
 
 export class App extends React.Component {
   constructor(props) {
