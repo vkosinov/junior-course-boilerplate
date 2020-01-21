@@ -12,15 +12,15 @@ import s from './styles.module.css';
 
 import products from '../../products';
 
-const priceArr = products.map(item => getPrice(item.price));
-
-const maxPrice = maxBy(item => item, priceArr);
-
-const minPrice = minBy(item => item, priceArr);
-
 export class App extends React.Component {
   constructor(props) {
     super(props);
+
+    const priceArr = products.map(item => getPrice(item.price));
+
+    const maxPrice = maxBy(item => item, priceArr);
+
+    const minPrice = minBy(item => item, priceArr);
 
     this.state = {
       minPrice: minPrice,
