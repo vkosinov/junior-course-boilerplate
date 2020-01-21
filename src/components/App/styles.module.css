@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+}
+
+.aside {
+  margin-right: 48px;
+  width: 256px;
+}
+
+.article {
+  width: 100%;
+  max-width: 736px;
+}
