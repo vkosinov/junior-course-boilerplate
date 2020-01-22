@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Title } from '../Title';
 import { Container } from '../Container';
-import { ProductList } from '../ProductList';
-import { Filter } from '../Filter';
+import ProductList from '../ProductList';
+import Filter from '../Filter';
 
 import { maxBy, minBy } from 'csssr-school-utils';
 import { getPrice } from '../../utils';
@@ -25,6 +25,7 @@ export class App extends React.Component {
     this.state = {
       minPrice: minPrice,
       maxPrice: maxPrice,
+      discount: 0,
     };
   }
 
@@ -42,12 +43,18 @@ export class App extends React.Component {
             <Filter
               maxPrice={this.state.maxPrice}
               minPrice={this.state.minPrice}
+              discount={this.state.discount}
               handleFilter={this.handleFilter}
             />
           </div>
 
           <div className={s.article}>
-            <ProductList items={products} maxPrice={this.state.maxPrice} minPrice={this.state.minPrice} />
+            <ProductList
+              items={products}
+              maxPrice={this.state.maxPrice}
+              minPrice={this.state.minPrice}
+              discount={this.state.discount}
+            />
           </div>
         </div>
       </Container>
