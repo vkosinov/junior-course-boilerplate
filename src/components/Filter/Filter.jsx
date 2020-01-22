@@ -1,19 +1,16 @@
 import React from 'react';
 
-import { Input } from '../Input';
-import { Button } from '../Button';
-import { LogRender } from '../LogRender';
+import Input from '../InputNumber';
+import logRender from '../../hoc/logRender';
+import withInputNumber from '../../hoc/withInputNumber';
+import Discount from 'csssr-school-input-discount';
 
 import s from './styles.module.css';
 
-export class Filter extends LogRender {
-  constructor(props) {
-    super(props);
+const InputDiscount = logRender(withInputNumber(Discount));
+const InputNumber = logRender(Input);
 
-    this.inputMaxRef = React.createRef();
-    this.inputMinRef = React.createRef();
-  }
-
+class Filter extends React.Component {
   handleClick = event => {
     event.preventDefault();
 
@@ -23,6 +20,18 @@ export class Filter extends LogRender {
         maxPrice: parseInt(this.inputMaxRef.current.value),
       });
     }
+  };
+
+  handleChangeMin = value => {
+    this.props.handleFilter({ minPrice: value });
+  };
+
+  handleChangeMax = value => {
+    this.props.handleFilter({ maxPrice: value });
+  };
+
+  handleDiscount = value => {
+    this.props.handleFilter({ discount: value });
   };
 
   render() {
@@ -35,19 +44,26 @@ export class Filter extends LogRender {
             <label className={s.item}>
               <span className={s.subtitle}>от</span>
 
-              <Input defaultValue={this.props.minPrice} ref={this.inputMinRef} />
+              <InputNumber value={this.props.minPrice} onChange={this.handleChangeMin} />
             </label>
 
             <label className={s.item}>
               <span className={s.subtitle}>до</span>
 
-              <Input defaultValue={this.props.maxPrice} ref={this.inputMaxRef} />
+              <InputNumber value={this.props.maxPrice} onChange={this.handleChangeMax} />
             </label>
           </span>
         </fieldset>
 
-        <Button value="Применить" onClick={this.handleClick} />
+        <InputDiscount
+          title="Скидка"
+          name="discount"
+          value={this.props.discount}
+          onChange={this.handleDiscount}
+        />
       </form>
     );
   }
 }
+
+export default logRender(Filter);
