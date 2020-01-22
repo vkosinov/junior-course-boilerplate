@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProductItem from 'csssr-school-product-card';
-import { LogRender } from '../LogRender';
+import logRender from '../../hoc/logRender';
+import ProductCard from 'csssr-school-product-card';
 
 import { getSelectedProduct } from '../../utils';
 
@@ -12,10 +12,17 @@ const ratingComponent = ({ isFilled }) => {
   return <div className={isFilled ? 'starFill' : ''} />;
 };
 
-export class ProductList extends LogRender {
+const ProductItem = logRender(ProductCard);
+
+class ProductList extends React.Component {
   render() {
     if (this.props.maxPrice >= 0 && this.props.minPrice >= 0) {
-      this.products = getSelectedProduct(this.props.items, this.props.minPrice, this.props.maxPrice);
+      this.products = getSelectedProduct(
+        this.props.items,
+        this.props.minPrice,
+        this.props.maxPrice,
+        this.props.discount
+      );
     } else {
       this.products = this.props.items;
     }
@@ -29,7 +36,7 @@ export class ProductList extends LogRender {
               img={item.img}
               title={item.name}
               price={item.price}
-              subPriceContent={item.subPriceContent}
+              subPriceContent={item.subPriceContent || ''}
               maxRating={5}
               rating={item.rating}
               ratingComponent={ratingComponent}
@@ -60,3 +67,5 @@ ProductList.propTypes = {
 ProductList.defaultProps = {
   items: [],
 };
+
+export default logRender(ProductList);
