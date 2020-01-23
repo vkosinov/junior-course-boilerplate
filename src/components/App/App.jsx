@@ -6,7 +6,7 @@ import ProductList from '../ProductList';
 import Filter from '../Filter';
 
 import { maxBy, minBy } from 'csssr-school-utils';
-import { getPrice } from '../../utils';
+import { getPrice, getSelectedProduct } from '../../utils';
 
 import s from './styles.module.css';
 
@@ -34,6 +34,15 @@ export class App extends React.Component {
   };
 
   render() {
+    if (this.state.maxPrice >= 0 && this.state.minPrice >= 0) {
+      this.products = getSelectedProduct(
+        products,
+        this.state.minPrice,
+        this.state.maxPrice,
+        this.state.discount
+      );
+    } else this.products = products;
+
     return (
       <Container>
         <Title>Список товаров</Title>
@@ -49,12 +58,7 @@ export class App extends React.Component {
           </div>
 
           <div className={s.article}>
-            <ProductList
-              items={products}
-              maxPrice={this.state.maxPrice}
-              minPrice={this.state.minPrice}
-              discount={this.state.discount}
-            />
+            <ProductList items={this.products} />
           </div>
         </div>
       </Container>

@@ -1,27 +1,12 @@
 import React from 'react';
 
-import Input from '../InputNumber';
+import InputNumber from '../InputNumber';
+import InputDiscount from '../InputDiscount';
 import logRender from '../../hoc/logRender';
-import withInputNumber from '../../hoc/withInputNumber';
-import Discount from 'csssr-school-input-discount';
 
 import s from './styles.module.css';
 
-const InputDiscount = logRender(withInputNumber(Discount));
-const InputNumber = logRender(Input);
-
 class Filter extends React.Component {
-  handleClick = event => {
-    event.preventDefault();
-
-    if (parseInt(this.inputMinRef.current.value) >= 0 && parseInt(this.inputMaxRef.current.value) >= 0) {
-      this.props.handleFilter({
-        minPrice: parseInt(this.inputMinRef.current.value),
-        maxPrice: parseInt(this.inputMaxRef.current.value),
-      });
-    }
-  };
-
   handleChangeMin = value => {
     this.props.handleFilter({ minPrice: value });
   };

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import logRender from '../../hoc/logRender';
 import ProductCard from 'csssr-school-product-card';
 
-import { getSelectedProduct } from '../../utils';
-
 import s from './styles.module.css';
 
 const ratingComponent = ({ isFilled }) => {
@@ -14,39 +12,26 @@ const ratingComponent = ({ isFilled }) => {
 
 const ProductItem = logRender(ProductCard);
 
-class ProductList extends React.Component {
-  render() {
-    if (this.props.maxPrice >= 0 && this.props.minPrice >= 0) {
-      this.products = getSelectedProduct(
-        this.props.items,
-        this.props.minPrice,
-        this.props.maxPrice,
-        this.props.discount
-      );
-    } else {
-      this.products = this.props.items;
-    }
-
-    return (
-      <div className={s.wrap}>
-        {this.products.map(item => (
-          <div className={s.wrapItem} key={item.id}>
-            <ProductItem
-              isInStock={item.isInStock}
-              img={item.img}
-              title={item.name}
-              price={item.price}
-              subPriceContent={item.subPriceContent || ''}
-              maxRating={5}
-              rating={item.rating}
-              ratingComponent={ratingComponent}
-            />
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
+const ProductList = ({ items }) => {
+  return (
+    <div className={s.wrap}>
+      {items.map(({ id, isInStock, img, name, price, subPriceContent, rating }) => (
+        <div className={s.wrapItem} key={id}>
+          <ProductItem
+            isInStock={isInStock}
+            img={img}
+            title={name}
+            price={price}
+            subPriceContent={subPriceContent || ''}
+            maxRating={5}
+            rating={rating}
+            ratingComponent={ratingComponent}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 ProductList.propTypes = {
   items: PropTypes.arrayOf(

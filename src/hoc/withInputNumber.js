@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { toInt } from 'csssr-school-utils';
+import { getDisplayName } from '../utils';
 
-export default OriginalComponent =>
+export default OriginalComponent => {
   class withInputNumber extends React.Component {
     constructor(props) {
       super(props);
@@ -29,4 +30,7 @@ export default OriginalComponent =>
     render() {
       return <OriginalComponent {...this.props} value={this.state.value} onChange={this.handleChange} />;
     }
-  };
+  }
+  withInputNumber.displayName = `withInputNumber(${getDisplayName(OriginalComponent)})`;
+  return withInputNumber;
+};

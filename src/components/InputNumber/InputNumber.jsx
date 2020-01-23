@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import withInputNumber from '../../hoc/withInputNumber';
+import logRender from '../../hoc/logRender';
 
 import s from './styles.module.css';
 
@@ -23,4 +24,4 @@ InputNumber.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default withInputNumber(InputNumber);
+export default withInputNumber(logRender(InputNumber));

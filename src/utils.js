@@ -7,3 +7,7 @@ export const getSelectedProduct = (items, minPrice, maxPrice, discount) => {
     item => getPrice(item.price) >= minPrice && getPrice(item.price) <= maxPrice * (1 - discount / 100)
   );
 };
+
+export function getDisplayName(OriginalComponent) {
+  return OriginalComponent.displayName || OriginalComponent.name || 'Component';
+}
