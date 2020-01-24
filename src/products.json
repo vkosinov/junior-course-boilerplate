@@ -18,7 +18,7 @@
   {
     "id": 3,
     "name": "Название третьего товара",
-    "price": "23 000 ₽",
+    "price": "20 700 ₽",
     "img": "/assets/img/products/product3.png",
     "rating": 4,
     "isInStock": true
