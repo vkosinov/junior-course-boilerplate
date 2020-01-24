@@ -9,7 +9,7 @@ export default OriginalComponent => {
       super(props);
 
       this.state = {
-        value: this.props.value,
+        value: props.value,
       };
     }
 

@@ -34,14 +34,12 @@ export class App extends React.Component {
   };
 
   render() {
-    if (this.state.maxPrice >= 0 && this.state.minPrice >= 0) {
-      this.products = getSelectedProduct(
-        products,
-        this.state.minPrice,
-        this.state.maxPrice,
-        this.state.discount
-      );
-    } else this.products = products;
+    const filteredProducts = getSelectedProduct(
+      products,
+      this.state.minPrice,
+      this.state.maxPrice,
+      this.state.discount
+    );
 
     return (
       <Container>
@@ -58,7 +56,7 @@ export class App extends React.Component {
           </div>
 
           <div className={s.article}>
-            <ProductList items={this.products} />
+            <ProductList items={filteredProducts} />
           </div>
         </div>
       </Container>
