@@ -5,30 +5,18 @@ import { getDisplayName } from '../utils';
 
 export default OriginalComponent => {
   class withInputNumber extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        value: props.value,
-      };
-    }
-
     handleChange = events => {
       const newValue = toInt(events.target.value);
 
-      if (newValue !== this.state.value) {
-        this.setState({
-          value: newValue,
-        });
-
+      if (newValue !== this.value) {
         if (this.props.onChange) {
-          this.props.onChange(newValue);
+          this.props.onChange(this.props.name, newValue);
         }
       }
     };
 
     render() {
-      return <OriginalComponent {...this.props} value={this.state.value} onChange={this.handleChange} />;
+      return <OriginalComponent {...this.props} onChange={this.handleChange} />;
     }
   }
   withInputNumber.displayName = `withInputNumber(${getDisplayName(OriginalComponent)})`;

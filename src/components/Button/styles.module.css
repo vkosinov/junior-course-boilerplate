@@ -10,3 +10,14 @@
   background-color: #323c48;
   cursor: pointer;
 }
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #5695ed;
+}
+
+.primary {
+  background-color: transparent;
+  color: #323c48;
+  border: 1px solid;
+}

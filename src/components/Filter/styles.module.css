@@ -35,3 +35,7 @@
 .item:first-child {
   margin-right: 16px;
 }
+
+.discount {
+  margin-bottom: 24px;
+}

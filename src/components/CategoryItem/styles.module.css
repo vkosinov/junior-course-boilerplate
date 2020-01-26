@@ -1,0 +1,26 @@
+.item {
+  font-size: 14px;
+  line-height: 14px;
+  color: #7e8fa4;
+  border: 1px solid #7e8fa4;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 8px 16px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.item + .item {
+  margin-left: 16px;
+}
+
+.item:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #5695ed;
+}
+
+.active {
+  background-color: #323c48;
+  border-color: #323c48;
+  color: white;
+}
