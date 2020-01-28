@@ -14,6 +14,7 @@ const InputNumber = props => {
       defaultValue={props.defaultValue}
       value={props.value}
       onChange={props.onChange}
+      name={props.name}
     />
   );
 };
@@ -22,6 +23,7 @@ InputNumber.propTypes = {
   defaultValue: PropTypes.number,
   value: PropTypes.number,
   onChange: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default withInputNumber(logRender(InputNumber));

@@ -5,7 +5,8 @@
     "price": "23 000 ₽",
     "img": "/assets/img/products/product1.png",
     "rating": 4,
-    "isInStock": true
+    "isInStock": true,
+    "category": "Clothes"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "price": "23 000 ₽",
     "img": "/assets/img/products/product2.png",
     "rating": 4,
-    "isInStock": false
+    "isInStock": false,
+    "category": "Books"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "price": "20 700 ₽",
     "img": "/assets/img/products/product3.png",
     "rating": 4,
-    "isInStock": true
+    "isInStock": true,
+    "category": "Clothes"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "price": "23 000 ₽",
     "img": "/assets/img/products/product4.png",
     "rating": 4,
-    "isInStock": true
+    "isInStock": true,
+    "category": "Books"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "price": "23 000 ₽",
     "img": "/assets/img/products/product5.png",
     "rating": 4,
-    "isInStock": true
+    "isInStock": true,
+    "category": "Clothes"
   },
   {
     "id": 6,
@@ -45,6 +50,7 @@
     "price": "5 000 ₽",
     "img": "/assets/img/products/product6.png",
     "rating": 4,
-    "isInStock": true
+    "isInStock": true,
+    "category": "Books"
   }
 ]

@@ -3,50 +3,63 @@ import React from 'react';
 import InputNumber from '../InputNumber';
 import InputDiscount from '../InputDiscount';
 import logRender from '../../hoc/logRender';
+import Button from '../Button';
+import Categories from '../Categories';
+
+import { AppContext } from '../../contexts';
 
 import s from './styles.module.css';
 
 class Filter extends React.Component {
-  handleChangeMin = value => {
-    this.props.handleFilter({ minPrice: value });
-  };
-
-  handleChangeMax = value => {
-    this.props.handleFilter({ maxPrice: value });
-  };
-
-  handleDiscount = value => {
-    this.props.handleFilter({ discount: value });
+  handleForm = event => {
+    event.preventDefault();
   };
 
   render() {
     return (
-      <form className={s.form}>
-        <fieldset className={s.inner}>
-          <legend className={s.title}>Цена</legend>
+      <AppContext.Consumer>
+        {({
+          maxPrice,
+          minPrice,
+          discount,
+          handelChangeFilter,
+          handleFilterClear,
+          categories,
+          activeCategory,
+        }) => (
+          <form className={s.form} onSubmit={this.handleForm}>
+            <fieldset className={s.inner}>
+              <legend className={s.title}>Цена</legend>
 
-          <span className={s.wrap}>
-            <label className={s.item}>
-              <span className={s.subtitle}>от</span>
+              <span className={s.wrap}>
+                <label className={s.item}>
+                  <span className={s.subtitle}>от</span>
 
-              <InputNumber value={this.props.minPrice} onChange={this.handleChangeMin} />
-            </label>
+                  <InputNumber name="minPrice" value={minPrice} onChange={handelChangeFilter} />
+                </label>
 
-            <label className={s.item}>
-              <span className={s.subtitle}>до</span>
+                <label className={s.item}>
+                  <span className={s.subtitle}>до</span>
 
-              <InputNumber value={this.props.maxPrice} onChange={this.handleChangeMax} />
-            </label>
-          </span>
-        </fieldset>
+                  <InputNumber name="maxPrice" value={maxPrice} onChange={handelChangeFilter} />
+                </label>
+              </span>
+            </fieldset>
 
-        <InputDiscount
-          title="Скидка"
-          name="discount"
-          value={this.props.discount}
-          onChange={this.handleDiscount}
-        />
-      </form>
+            <div className={s.discount}>
+              <InputDiscount title="Скидка" name="discount" value={discount} onChange={handelChangeFilter} />
+            </div>
+
+            <Categories
+              categories={categories}
+              handleFilter={handelChangeFilter}
+              activeCategory={activeCategory}
+            />
+
+            <Button value="Сбросить фильтры" mod="primary" onClick={handleFilterClear} />
+          </form>
+        )}
+      </AppContext.Consumer>
     );
   }
 }
