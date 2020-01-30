@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { store } from '../../store';
 
 import { Sidebar } from '../../containers/Sidebar';
-import { List } from '../../containers/List';
+import List from '../../containers/List';
 import { Title } from '../Title';
 import { Container } from '../Container';
 

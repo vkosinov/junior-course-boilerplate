@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 
 import logRender from '../../hoc/logRender';
 import ProductCard from 'csssr-school-product-card';
-import { getSelectedProduct } from '../../utils';
-
-import products from '../../products';
 
 import s from './styles.module.css';
 
@@ -15,9 +12,7 @@ const ratingComponent = ({ isFilled }) => {
 
 const ProductItem = logRender(ProductCard);
 
-const ProductList = ({ minPrice, maxPrice, discount, activeCategory }) => {
-  const items = getSelectedProduct(products, minPrice, maxPrice, discount, activeCategory);
-
+const ProductList = ({ items }) => {
   return (
     <div className={s.wrap}>
       {items.map(({ id, isInStock, img, name, price, subPriceContent, rating }) => (

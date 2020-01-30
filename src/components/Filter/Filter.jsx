@@ -13,6 +13,11 @@ class Filter extends React.PureComponent {
     event.preventDefault();
   };
 
+  handleClear = () => {
+    window.history.pushState({}, '', '/');
+    this.props.clearFilter();
+  };
+
   render() {
     return (
       <form className={s.form} onSubmit={this.handleForm}>
@@ -49,7 +54,7 @@ class Filter extends React.PureComponent {
           activeCategory={this.props.activeCategory}
         />
 
-        <Button value="Сбросить фильтры" mod="primary" onClick={this.props.onClick} />
+        <Button value="Сбросить фильтры" mod="primary" type="button" onClick={this.handleClear} />
       </form>
     );
   }

@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeFilter: (name, value) => dispatch({ type: 'CHANGE_FILTER', payload: { name: name, value: value } }),
-    onClick: () => dispatch({ type: 'CLEAR_FILTER' }),
+    clearFilter: () => dispatch({ type: 'CLEAR_FILTER' }),
   };
 };
 

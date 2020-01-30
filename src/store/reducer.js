@@ -9,7 +9,6 @@ export function reducer(state, action) {
       };
     }
     case 'CLEAR_FILTER': {
-      window.history.pushState({}, '', '/');
       return {
         ...initialState,
       };

@@ -12,10 +12,10 @@ const categories = getCategory(products);
 const activeCategory = window.location.pathname.length > 1 ? window.location.pathname.slice(1) : '';
 
 export const initialState = {
-  minPrice: minPrice,
-  maxPrice: maxPrice,
+  minPrice,
+  maxPrice,
   discount: 0,
-  activeCategory: activeCategory,
+  activeCategory,
   categories,
 };
 
