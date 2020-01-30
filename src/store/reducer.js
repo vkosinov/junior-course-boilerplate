@@ -11,6 +11,7 @@ export function reducer(state, action) {
     case 'CLEAR_FILTER': {
       return {
         ...initialState,
+        activeCategory: '',
       };
     }
 
