@@ -9,7 +9,7 @@ import s from './styles.module.css';
 const CategoryItem = ({ name, active, onClick }) => {
   const handelClick = () => {
     onClick('activeCategory', name);
-    window.history.pushState({}, '', name);
+    window.history.pushState({}, '', `?category=${name}`);
   };
   return (
     <button onClick={handelClick} className={cn(s.item, { [s.active]: name === active })} type="button">

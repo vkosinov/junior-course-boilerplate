@@ -13,6 +13,13 @@ export function reducer(state, action) {
         ...initialState,
       };
     }
+
+    case 'SET_CATEGORY': {
+      return {
+        ...state,
+        activeCategory: action.payload,
+      };
+    }
     default:
       return state;
   }

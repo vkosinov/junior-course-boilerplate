@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
+import queryString from 'query-string';
 
 import { Sidebar } from '../../containers/Sidebar';
 import List from '../../containers/List';
@@ -10,6 +11,22 @@ import { Container } from '../Container';
 import s from './styles.module.css';
 
 export class App extends React.Component {
+  componentDidMount() {
+    window.addEventListener('popstate', this.setCategoryHistory);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this.setCategoryHistory);
+  }
+
+  setCategoryHistory() {
+    const urlParam = queryString.parse(window.location.search);
+
+    if (store.getState().activeCategory !== urlParam.category) {
+      store.dispatch({ type: 'SET_CATEGORY', payload: urlParam.category });
+    }
+  }
+
   render() {
     return (
       <Provider store={store}>
