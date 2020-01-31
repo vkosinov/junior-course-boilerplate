@@ -6,60 +6,56 @@ import logRender from '../../hoc/logRender';
 import Button from '../Button';
 import Categories from '../Categories';
 
-import { AppContext } from '../../contexts';
-
 import s from './styles.module.css';
 
-class Filter extends React.Component {
+class Filter extends React.PureComponent {
   handleForm = event => {
     event.preventDefault();
   };
 
+  handleClear = () => {
+    window.history.pushState({}, '', '/');
+    this.props.clearFilter();
+  };
+
   render() {
     return (
-      <AppContext.Consumer>
-        {({
-          maxPrice,
-          minPrice,
-          discount,
-          handelChangeFilter,
-          handleFilterClear,
-          categories,
-          activeCategory,
-        }) => (
-          <form className={s.form} onSubmit={this.handleForm}>
-            <fieldset className={s.inner}>
-              <legend className={s.title}>Цена</legend>
+      <form className={s.form} onSubmit={this.handleForm}>
+        <fieldset className={s.inner}>
+          <legend className={s.title}>Цена</legend>
 
-              <span className={s.wrap}>
-                <label className={s.item}>
-                  <span className={s.subtitle}>от</span>
+          <span className={s.wrap}>
+            <label className={s.item}>
+              <span className={s.subtitle}>от</span>
 
-                  <InputNumber name="minPrice" value={minPrice} onChange={handelChangeFilter} />
-                </label>
+              <InputNumber name="minPrice" value={this.props.minPrice} onChange={this.props.changeFilter} />
+            </label>
 
-                <label className={s.item}>
-                  <span className={s.subtitle}>до</span>
+            <label className={s.item}>
+              <span className={s.subtitle}>до</span>
 
-                  <InputNumber name="maxPrice" value={maxPrice} onChange={handelChangeFilter} />
-                </label>
-              </span>
-            </fieldset>
+              <InputNumber name="maxPrice" value={this.props.maxPrice} onChange={this.props.changeFilter} />
+            </label>
+          </span>
+        </fieldset>
 
-            <div className={s.discount}>
-              <InputDiscount title="Скидка" name="discount" value={discount} onChange={handelChangeFilter} />
-            </div>
+        <div className={s.discount}>
+          <InputDiscount
+            title="Скидка"
+            name="discount"
+            value={this.props.discount}
+            onChange={this.props.changeFilter}
+          />
+        </div>
 
-            <Categories
-              categories={categories}
-              handleFilter={handelChangeFilter}
-              activeCategory={activeCategory}
-            />
+        <Categories
+          categories={this.props.categories}
+          handleFilter={this.props.changeFilter}
+          activeCategory={this.props.activeCategory}
+        />
 
-            <Button value="Сбросить фильтры" mod="primary" onClick={handleFilterClear} />
-          </form>
-        )}
-      </AppContext.Consumer>
+        <Button value="Сбросить фильтры" mod="primary" type="button" onClick={this.handleClear} />
+      </form>
     );
   }
 }
