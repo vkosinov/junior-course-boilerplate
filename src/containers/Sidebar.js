@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Filter from '../components/Filter';
+import { changeFilter, clearFilter } from '../store/actions';
 
 const mapStateToProps = state => {
   return {
@@ -13,8 +14,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeFilter: (name, value) => dispatch({ type: 'CHANGE_FILTER', payload: { name: name, value: value } }),
-    clearFilter: () => dispatch({ type: 'CLEAR_FILTER' }),
+    changeFilter: (name, value) => dispatch(changeFilter(name, value)),
+    clearFilter: () => dispatch(clearFilter()),
   };
 };
 

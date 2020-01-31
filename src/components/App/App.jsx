@@ -9,6 +9,7 @@ import { Title } from '../Title';
 import { Container } from '../Container';
 
 import s from './styles.module.css';
+import { setCategory, goToPage } from '../../store/actions';
 
 export class App extends React.Component {
   componentDidMount() {
@@ -23,7 +24,13 @@ export class App extends React.Component {
     const urlParam = queryString.parse(window.location.search);
 
     if (store.getState().activeCategory !== urlParam.category) {
-      store.dispatch({ type: 'SET_CATEGORY', payload: urlParam.category });
+      store.dispatch(setCategory(urlParam.category));
+    }
+
+    if (urlParam.page && store.getState().activePage !== urlParam.page) {
+      store.dispatch(goToPage(+urlParam.page));
+    } else {
+      store.dispatch(goToPage(1));
     }
   }
 
