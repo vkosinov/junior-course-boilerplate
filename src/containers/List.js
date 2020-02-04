@@ -3,28 +3,37 @@ import { connect } from 'react-redux';
 
 import ProductList from '../components/ProductList';
 import { Pagination } from '../components/Pagination';
-import { goToPage } from '../store/actions';
-import { getPagination } from '../store/selectors';
+import { goToPage } from '../store/pagination/actions';
+import { getFilteredProduct } from '../store/filter/selectors';
 
 import products from './../products';
 
 class List extends React.Component {
   render() {
-    const { minPrice, maxPrice, discount, activeCategory, activePage } = this.props;
-    const items = getPagination({ products, minPrice, maxPrice, discount, activeCategory, numberPage: 3 });
-
+    const { items, activePage, goToPage } = this.props;
     return (
       <>
-        <ProductList items={items[activePage - 1]} />
-        <Pagination pages={items.length} activePage={activePage} handelGoToPage={this.props.goToPage} />
+        {items.length && activePage <= items.length ? (
+          <>
+            <ProductList items={items[activePage - 1]} />
+
+            <Pagination pages={items} activePage={activePage} handelGoToPage={goToPage} />
+          </>
+        ) : (
+          <p>Ничего не найдено</p>
+        )}
       </>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ filter, pagination }) => {
   return {
-    ...state,
+    items: getFilteredProduct({
+      products,
+      ...filter,
+    }),
+    activePage: pagination.activePage,
   };
 };
 

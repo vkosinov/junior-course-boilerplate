@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import Filter from '../components/Filter';
-import { changeFilter, clearFilter } from '../store/actions';
+import { changeFilter, clearFilter } from '../store/filter/actions';
+import {} from '../store/pagination/actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ filter }) => {
   return {
-    minPrice: state.minPrice,
-    maxPrice: state.maxPrice,
-    discount: state.discount,
-    activeCategory: state.activeCategory,
-    categories: state.categories,
+    minPrice: filter.minPrice,
+    maxPrice: filter.maxPrice,
+    discount: filter.discount,
+    activeCategory: filter.activeCategory,
+    categories: filter.categories,
   };
 };
 

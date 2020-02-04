@@ -9,8 +9,9 @@ import s from './styles.module.css';
 
 const Pagination = ({ activePage, pages, handelGoToPage }) => {
   const handleClick = number => {
-    if (number <= pages && number > 0) {
+    if (number <= pages.length && number > 0) {
       handelGoToPage(number);
+
       if (window.location.search) {
         const urlParam = queryString.parse(window.location.search);
         const rezult = { ...urlParam, page: number };
@@ -22,31 +23,23 @@ const Pagination = ({ activePage, pages, handelGoToPage }) => {
     }
   };
 
-  const renderItems = () => {
-    let items = [];
-    for (let item = 1; item <= pages; item++) {
-      items.push(
-        <button
-          className={cn(s.item, { [s.active]: item === activePage })}
-          onClick={() => handleClick(item)}
-          type="button"
-          key={item}
-        >
-          {item}
-        </button>
-      );
-    }
-    return items;
-  };
-
   return (
-    pages !== 0 && (
+    pages.length !== 0 && (
       <div className={s.wrap}>
         <button type="button" className={s.edge} onClick={() => handleClick(activePage - 1)}>
           Назад
         </button>
 
-        {renderItems()}
+        {pages.map((item, index) => (
+          <button
+            className={cn(s.item, { [s.active]: index + 1 === activePage })}
+            onClick={() => handleClick(index + 1)}
+            type="button"
+            key={index}
+          >
+            {index + 1}
+          </button>
+        ))}
 
         <button type="button" className={s.edge} onClick={() => handleClick(activePage + 1)}>
           Вперед
@@ -58,9 +51,13 @@ const Pagination = ({ activePage, pages, handelGoToPage }) => {
 
 Pagination.propTypes = {
   activePage: PropTypes.number,
-  pages: PropTypes.number,
+  pages: PropTypes.array,
   handelGoToPage: PropTypes.func,
   handleTogglePag: PropTypes.func,
+};
+
+Pagination.defaulProps = {
+  pages: [1, 2, 3],
 };
 
 export default logRender(Pagination);

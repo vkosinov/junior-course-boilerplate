@@ -7,9 +7,10 @@ import { Sidebar } from '../../containers/Sidebar';
 import List from '../../containers/List';
 import { Title } from '../Title';
 import { Container } from '../Container';
+import { setCategory } from '../../store/filter/actions';
+import { goToPage } from '../../store/pagination/actions';
 
 import s from './styles.module.css';
-import { setCategory, goToPage } from '../../store/actions';
 
 export class App extends React.Component {
   componentDidMount() {
@@ -22,12 +23,13 @@ export class App extends React.Component {
 
   setCategoryHistory() {
     const urlParam = queryString.parse(window.location.search);
+    const { filter, pagination } = store.getState();
 
-    if (store.getState().activeCategory !== urlParam.category) {
+    if (filter.activeCategory !== urlParam.category) {
       store.dispatch(setCategory(urlParam.category));
     }
 
-    if (urlParam.page && store.getState().activePage !== urlParam.page) {
+    if (urlParam.page && pagination.activePage !== urlParam.page) {
       store.dispatch(goToPage(+urlParam.page));
     } else {
       store.dispatch(goToPage(1));

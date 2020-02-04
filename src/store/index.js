@@ -1,4 +1,10 @@
-import { createStore } from 'redux';
-import { reducer } from './reducer';
+import { createStore, combineReducers } from 'redux';
+import { filterReducer } from './filter/reducer';
+import { paginationReducer } from './pagination/reducer';
 
-export const store = createStore(reducer);
+const rootReducer = combineReducers({
+  filter: filterReducer,
+  pagination: paginationReducer,
+});
+
+export const store = createStore(rootReducer);

@@ -52,59 +52,5 @@
     "rating": 4,
     "isInStock": true,
     "category": "Books"
-  },
-  {
-    "id": 7,
-    "name": "Название второго товара",
-    "price": "23 000 ₽",
-    "img": "/assets/img/products/product2.png",
-    "rating": 4,
-    "isInStock": false,
-    "category": "Books"
-  },
-  {
-    "id": 8,
-    "name": "Название первого товара",
-    "price": "23 000 ₽",
-    "img": "/assets/img/products/product1.png",
-    "rating": 4,
-    "isInStock": true,
-    "category": "Clothes"
-  },
-  {
-    "id": 9,
-    "name": "Название третьего товара",
-    "price": "20 700 ₽",
-    "img": "/assets/img/products/product3.png",
-    "rating": 4,
-    "isInStock": true,
-    "category": "Clothes"
-  },
-  {
-    "id": 10,
-    "name": "Название четвертого товара",
-    "price": "23 000 ₽",
-    "img": "/assets/img/products/product4.png",
-    "rating": 4,
-    "isInStock": true,
-    "category": "Books"
-  },
-  {
-    "id": 11,
-    "name": "Название пятого товара",
-    "price": "23 000 ₽",
-    "img": "/assets/img/products/product5.png",
-    "rating": 4,
-    "isInStock": true,
-    "category": "Clothes"
-  },
-  {
-    "id": 12,
-    "name": "Название шестого товара",
-    "price": "5 000 ₽",
-    "img": "/assets/img/products/product6.png",
-    "rating": 4,
-    "isInStock": true,
-    "category": "Books"
   }
 ]
