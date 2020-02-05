@@ -1,20 +1,22 @@
 import { connect } from 'react-redux';
 import Filter from '../components/Filter';
+import { changeFilter, clearFilter } from '../store/filter/actions';
+import {} from '../store/pagination/actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ filter }) => {
   return {
-    minPrice: state.minPrice,
-    maxPrice: state.maxPrice,
-    discount: state.discount,
-    activeCategory: state.activeCategory,
-    categories: state.categories,
+    minPrice: filter.minPrice,
+    maxPrice: filter.maxPrice,
+    discount: filter.discount,
+    activeCategory: filter.activeCategory,
+    categories: filter.categories,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeFilter: (name, value) => dispatch({ type: 'CHANGE_FILTER', payload: { name: name, value: value } }),
-    clearFilter: () => dispatch({ type: 'CLEAR_FILTER' }),
+    changeFilter: (name, value) => dispatch(changeFilter(name, value)),
+    clearFilter: () => dispatch(clearFilter()),
   };
 };
 

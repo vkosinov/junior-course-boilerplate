@@ -31,12 +31,3 @@ export function getCategory(items) {
 
   return categorys;
 }
-
-export function initialState(minPrice, maxPrice) {
-  return {
-    minPrice: minPrice,
-    maxPrice: maxPrice,
-    discount: 0,
-    activeCategory: '',
-  };
-}
