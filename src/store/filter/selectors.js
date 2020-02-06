@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { splitEvery } from 'csssr-school-utils';
 import { getPrice } from '../../utils';
 
-const itemsPerPage = 6;
+const itemsPerPage = 2;
 
 export const getFilteredProduct = createSelector(
   ({ products }) => products,

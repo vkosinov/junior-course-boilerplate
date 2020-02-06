@@ -54,7 +54,7 @@ class Filter extends React.PureComponent {
           activeCategory={this.props.activeCategory}
         />
 
-        <Button value="Сбросить фильтры" mod="primary" type="button" onClick={this.handleClear} />
+        <Button value="Сбросить фильтры" mod="primary" to="/" />
       </form>
     );
   }

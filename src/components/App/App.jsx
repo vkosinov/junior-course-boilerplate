@@ -1,57 +1,28 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from '../../store';
-import queryString from 'query-string';
+import { ConnectedRouter } from 'connected-react-router';
 
-import { Sidebar } from '../../containers/Sidebar';
-import List from '../../containers/List';
-import { Title } from '../Title';
-import { Container } from '../Container';
-import { setCategory } from '../../store/filter/actions';
-import { goToPage } from '../../store/pagination/actions';
+import { ProductsPage } from '../pages/ProductsPage';
+import { ProductPage } from '../pages/ProductPage';
 
-import s from './styles.module.css';
+import configureStore, { history } from '../../store';
+
+const store = configureStore();
 
 export class App extends React.Component {
-  componentDidMount() {
-    window.addEventListener('popstate', this.setCategoryHistory);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('popstate', this.setCategoryHistory);
-  }
-
-  setCategoryHistory() {
-    const urlParam = queryString.parse(window.location.search);
-    const { filter, pagination } = store.getState();
-
-    if (filter.activeCategory !== urlParam.category) {
-      store.dispatch(setCategory(urlParam.category));
-    }
-
-    if (urlParam.page && pagination.activePage !== urlParam.page) {
-      store.dispatch(goToPage(+urlParam.page));
-    } else {
-      store.dispatch(goToPage(1));
-    }
-  }
-
   render() {
     return (
       <Provider store={store}>
-        <Container>
-          <Title>Список товаров</Title>
+        <ConnectedRouter history={history}>
+          <Provider store={store}>
+            <Switch>
+              <Route path="/" exact component={ProductsPage} />
 
-          <div className={s.main}>
-            <div className={s.aside}>
-              <Sidebar />
-            </div>
-
-            <div className={s.article}>
-              <List />
-            </div>
-          </div>
-        </Container>
+              <Route path="/:id" component={ProductPage} />
+            </Switch>
+          </Provider>
+        </ConnectedRouter>
       </Provider>
     );
   }

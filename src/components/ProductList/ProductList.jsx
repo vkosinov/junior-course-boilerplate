@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import logRender from '../../hoc/logRender';
 import ProductCard from 'csssr-school-product-card';
@@ -16,7 +17,7 @@ const ProductList = ({ items }) => {
   return (
     <div className={s.wrap}>
       {items.map(({ id, isInStock, img, name, price, subPriceContent, rating }) => (
-        <div className={s.wrapItem} key={id}>
+        <Link to={`/${id}`} className={s.wrapItem} key={id}>
           <ProductItem
             isInStock={isInStock}
             img={img}
@@ -27,7 +28,7 @@ const ProductList = ({ items }) => {
             rating={rating}
             ratingComponent={ratingComponent}
           />
-        </div>
+        </Link>
       ))}
     </div>
   );

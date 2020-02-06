@@ -7,4 +7,10 @@
 
 .wrapItem {
   margin-bottom: 56px;
+  text-decoration: none;
+  transition: 300ms opacity;
+}
+
+.wrapItem:hover {
+  opacity: 0.7;
 }

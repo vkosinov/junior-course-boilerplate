@@ -19,6 +19,8 @@
   margin-left: 1px;
   margin-right: 1px;
   cursor: pointer;
+  text-decoration: none;
+  line-height: 29px;
 }
 
 .item {

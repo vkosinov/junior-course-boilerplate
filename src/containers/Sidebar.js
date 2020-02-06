@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import Filter from '../components/Filter';
-import { changeFilter, clearFilter } from '../store/filter/actions';
-import {} from '../store/pagination/actions';
+import { changeFilter } from '../store/filter/actions';
+import { push } from 'connected-react-router';
 
-const mapStateToProps = ({ filter }) => {
+const mapStateToProps = ({ filter, router }) => {
   return {
     minPrice: filter.minPrice,
     maxPrice: filter.maxPrice,
     discount: filter.discount,
-    activeCategory: filter.activeCategory,
+    activeCategory: router.location.query.category,
     categories: filter.categories,
   };
 };
@@ -16,7 +16,7 @@ const mapStateToProps = ({ filter }) => {
 const mapDispatchToProps = dispatch => {
   return {
     changeFilter: (name, value) => dispatch(changeFilter(name, value)),
-    clearFilter: () => dispatch(clearFilter()),
+    changeCategory: value => dispatch(push(value)),
   };
 };
 

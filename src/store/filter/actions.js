@@ -1,4 +1,4 @@
-import { CHANGE_FILTER, SET_CATEGORY, CLEAR_FILTER } from './types';
+import { CHANGE_FILTER } from './types';
 
 export const changeFilter = (name, value) => {
   return {
@@ -7,19 +7,5 @@ export const changeFilter = (name, value) => {
       name,
       value,
     },
-  };
-};
-
-export const setCategory = activeCategory => {
-  return {
-    type: SET_CATEGORY,
-    payload: activeCategory,
-    activePage: 1,
-  };
-};
-
-export const clearFilter = () => {
-  return {
-    type: CLEAR_FILTER,
   };
 };
