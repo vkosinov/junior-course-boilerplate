@@ -3,16 +3,16 @@ import { createSelector } from 'reselect';
 import { splitEvery } from 'csssr-school-utils';
 import { getPrice } from '../../utils';
 
-const itemsPerPage = 2;
+const itemsPerPage = 4;
 
 export const getFilteredProduct = createSelector(
   ({ products }) => products,
-  ({ minPrice }) => minPrice,
-  ({ maxPrice }) => maxPrice,
-  ({ discount }) => discount,
-  ({ activeCategory }) => activeCategory,
-  (products, minPrice, maxPrice, discount, category) =>
-    splitEvery(
+  ({ filter }) => filter.minPrice,
+  ({ filter }) => filter.maxPrice,
+  ({ filter }) => filter.discount,
+  ({ router }) => router.location.query.category,
+  (products, minPrice, maxPrice, discount, category) => {
+    return splitEvery(
       itemsPerPage,
       products.filter(item => {
         return (
@@ -21,5 +21,6 @@ export const getFilteredProduct = createSelector(
           getPrice(item.price) <= maxPrice * (1 - discount / 100)
         );
       })
-    )
+    );
+  }
 );

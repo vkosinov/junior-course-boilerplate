@@ -7,20 +7,31 @@ import logRender from '../../hoc/logRender';
 
 import s from './styles.module.css';
 
-const Pagination = ({ activePage, pages }) => {
+const Pagination = ({ activePage, pages, activeCategory }) => {
   const active = activePage || 1;
+
+  const getPath = pageNumber => {
+    let url = '';
+
+    if (activeCategory) {
+      url = `&category=${activeCategory}`;
+    }
+
+    return `page=${pageNumber}${url}`;
+  };
+
   return (
     pages.length !== 0 && (
       <div className={s.wrap}>
         {active !== 1 && (
-          <Link className={s.edge} to={{ search: `page=${active - 1}` }}>
+          <Link className={s.edge} to={{ search: getPath(active - 1) }}>
             Назад
           </Link>
         )}
 
         {pages.map((item, index) => (
           <Link
-            to={{ search: `page=${index + 1}` }}
+            to={{ search: getPath(index + 1) }}
             className={cn(s.item, { [s.active]: index + 1 === active })}
             key={index}
           >
@@ -29,7 +40,7 @@ const Pagination = ({ activePage, pages }) => {
         ))}
 
         {active !== pages.length && (
-          <Link className={s.edge} to={{ search: `page=${active + 1}` }}>
+          <Link className={s.edge} to={{ search: getPath(active + 1) }}>
             Вперед
           </Link>
         )}

@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 
 import logRender from '../../hoc/logRender';
 import ProductCard from 'csssr-school-product-card';
+import { RatingComponent } from '../RatingComponent';
 
 import s from './styles.module.css';
-
-const ratingComponent = ({ isFilled }) => {
-  return <div className={isFilled ? 'starFill' : ''} />;
-};
 
 const ProductItem = logRender(ProductCard);
 
@@ -26,7 +23,7 @@ const ProductList = ({ items }) => {
             subPriceContent={subPriceContent || ''}
             maxRating={5}
             rating={rating}
-            ratingComponent={ratingComponent}
+            ratingComponent={RatingComponent}
           />
         </Link>
       ))}

@@ -15,13 +15,11 @@ export class App extends React.Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Provider store={store}>
-            <Switch>
-              <Route path="/" exact component={ProductsPage} />
+          <Switch>
+            <Route path="/" exact component={ProductsPage} />
 
-              <Route path="/:id" component={ProductPage} />
-            </Switch>
-          </Provider>
+            <Route path="/:id" component={ProductPage} />
+          </Switch>
         </ConnectedRouter>
       </Provider>
     );

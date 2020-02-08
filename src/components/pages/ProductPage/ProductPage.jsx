@@ -6,10 +6,18 @@ import s from './style.module.css';
 
 import products from '../../../products';
 
+import { RatingComponent } from '../../RatingComponent';
+
 export const ProductPage = props => {
+  const maxRating = 5;
   const productId = +props.match.params.id;
 
   const product = products.find(item => item.id === productId);
+
+  const rating = [...Array(maxRating).keys()].map(i => (
+    <RatingComponent isFilled={i + 1 <= product.rating} key={i} />
+  ));
+
   return (
     <>
       <h1 className={s.title}>
@@ -32,7 +40,7 @@ export const ProductPage = props => {
             <div className={s.description}>
               <h2 className={s.name}>{product.name}</h2>
 
-              <div className={s.rating}>☆ ☆ ☆ ★ ★</div>
+              <div className={s.rating}>{rating}</div>
 
               <p className={s.price}>{product.price}</p>
             </div>
