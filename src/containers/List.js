@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 
 import ProductList from '../components/ProductList';
 import { Pagination } from '../components/Pagination';
-import { getFilteredProduct } from '../store/filter/selectors';
-
-import products from './../products';
+import { getFilteredProduct, getActiveCategory, getActivePage } from '../store/filter/selectors';
 
 class List extends React.Component {
   render() {
@@ -31,11 +29,10 @@ class List extends React.Component {
 const mapStateToProps = state => {
   return {
     items: getFilteredProduct({
-      products,
       ...state,
     }),
-    activePage: state.router.location.query.page,
-    activeCategory: state.router.location.query.category,
+    activePage: getActivePage(state),
+    activeCategory: getActiveCategory(state),
   };
 };
 

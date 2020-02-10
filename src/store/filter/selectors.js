@@ -5,12 +5,22 @@ import { getPrice } from '../../utils';
 
 const itemsPerPage = 4;
 
+export const getActiveCategory = createSelector(
+  ({ router }) => router.location.query.category,
+  category => category
+);
+
+export const getActivePage = createSelector(
+  ({ router }) => router.location.query.page,
+  page => page
+);
+
 export const getFilteredProduct = createSelector(
-  ({ products }) => products,
+  ({ filter }) => filter.products,
   ({ filter }) => filter.minPrice,
   ({ filter }) => filter.maxPrice,
   ({ filter }) => filter.discount,
-  ({ router }) => router.location.query.category,
+  getActiveCategory,
   (products, minPrice, maxPrice, discount, category) => {
     return splitEvery(
       itemsPerPage,

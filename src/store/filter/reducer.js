@@ -14,6 +14,7 @@ const initialState = {
   maxPrice,
   discount: 0,
   categories,
+  products,
 };
 
 export function filterReducer(state = initialState, action) {
