@@ -6,13 +6,13 @@ import logRender from '../../hoc/logRender';
 
 import s from './style.module.css';
 
-const Categories = ({ title, categories, activeCategory, handleFilter }) => {
+const Categories = ({ title, categories, activeCategory, changeCategory }) => {
   return (
     <div className={s.wrap}>
       <h3 className={s.title}>{title}</h3>
       <div className={s.items}>
         {categories.map((item, index) => (
-          <CategoryItem key={index} name={item} active={activeCategory} onClick={handleFilter} />
+          <CategoryItem key={index} name={item} active={activeCategory} onClick={changeCategory} />
         ))}
       </div>
     </div>

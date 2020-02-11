@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -6,15 +7,11 @@ import logRender from '../../hoc/logRender';
 
 import s from './styles.module.css';
 
-const CategoryItem = ({ name, active, onClick }) => {
-  const handelClick = () => {
-    onClick('activeCategory', name);
-    window.history.pushState({}, '', `?category=${name}`);
-  };
+const CategoryItem = ({ name, active }) => {
   return (
-    <button onClick={handelClick} className={cn(s.item, { [s.active]: name === active })} type="button">
+    <Link to={{ search: `category=${name}` }} className={cn(s.item, { [s.active]: name === active })}>
       {name}
-    </button>
+    </Link>
   );
 };
 

@@ -3,21 +3,20 @@ import { connect } from 'react-redux';
 
 import ProductList from '../components/ProductList';
 import { Pagination } from '../components/Pagination';
-import { goToPage } from '../store/pagination/actions';
-import { getFilteredProduct } from '../store/filter/selectors';
-
-import products from './../products';
+import { getFilteredProduct, getActiveCategory, getActivePage } from '../store/filter/selectors';
 
 class List extends React.Component {
   render() {
-    const { items, activePage, goToPage } = this.props;
+    const { items, activePage, activeCategory } = this.props;
+    const active = +activePage || 1;
+
     return (
       <>
-        {items.length && activePage <= items.length ? (
+        {items.length ? (
           <>
-            <ProductList items={items[activePage - 1]} />
+            <ProductList items={items[active - 1]} />
 
-            <Pagination pages={items} activePage={activePage} handelGoToPage={goToPage} />
+            <Pagination pages={items} activePage={active} activeCategory={activeCategory} />
           </>
         ) : (
           <p>Ничего не найдено</p>
@@ -27,20 +26,14 @@ class List extends React.Component {
   }
 }
 
-const mapStateToProps = ({ filter, pagination }) => {
+const mapStateToProps = state => {
   return {
     items: getFilteredProduct({
-      products,
-      ...filter,
+      ...state,
     }),
-    activePage: pagination.activePage,
+    activePage: getActivePage(state),
+    activeCategory: getActiveCategory(state),
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    goToPage: number => dispatch(goToPage(number)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps)(List);

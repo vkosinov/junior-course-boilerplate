@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import logRender from '../../hoc/logRender';
 import ProductCard from 'csssr-school-product-card';
+import { RatingComponent } from '../RatingComponent';
 
 import s from './styles.module.css';
-
-const ratingComponent = ({ isFilled }) => {
-  return <div className={isFilled ? 'starFill' : ''} />;
-};
 
 const ProductItem = logRender(ProductCard);
 
@@ -16,7 +14,7 @@ const ProductList = ({ items }) => {
   return (
     <div className={s.wrap}>
       {items.map(({ id, isInStock, img, name, price, subPriceContent, rating }) => (
-        <div className={s.wrapItem} key={id}>
+        <Link to={`/${id}`} className={s.wrapItem} key={id}>
           <ProductItem
             isInStock={isInStock}
             img={img}
@@ -25,9 +23,9 @@ const ProductList = ({ items }) => {
             subPriceContent={subPriceContent || ''}
             maxRating={5}
             rating={rating}
-            ratingComponent={ratingComponent}
+            ratingComponent={RatingComponent}
           />
-        </div>
+        </Link>
       ))}
     </div>
   );
