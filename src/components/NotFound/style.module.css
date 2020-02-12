@@ -1,0 +1,20 @@
+.title {
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 48px;
+  text-align: center;
+  color: #323c48;
+  padding-top: 80px;
+}
+
+.back {
+  text-decoration: none;
+  color: #000000;
+  margin-right: 19px;
+}
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+}
