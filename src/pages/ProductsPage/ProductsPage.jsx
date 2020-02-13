@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Container } from '../../Container';
-import Sidebar from '../../../containers/Sidebar';
-import List from '../../../containers/List';
+import { Container } from '../../components/Container';
+import Sidebar from '../../containers/Sidebar';
+import List from '../../containers/List';
 
 import s from './style.module.css';
 
