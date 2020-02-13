@@ -27,7 +27,7 @@ class List extends React.Component {
           </>
         )}
 
-        {!loading && !error && items.length && (
+        {!loading && !error && items.length > 0 && (
           <>
             <Title>Список товаров</Title>
             <ProductList items={items[active - 1]} />
@@ -36,7 +36,7 @@ class List extends React.Component {
           </>
         )}
 
-        {!loading && !error && !items.length && <NotFound title="Товар не найден" />}
+        {!loading && !error && items.length === 0 && <NotFound title="Товар не найден" />}
 
         {loading && error && <NotFound title={`Произошла ошибка ${error}`} />}
       </>
