@@ -1,20 +1,10 @@
-import { maxBy, minBy } from 'csssr-school-utils';
-import { getPrice, getCategory } from '../../utils';
 import { CHANGE_FILTER } from './types';
 
-import products from '../../products';
-
-const priceArr = products.map(item => getPrice(item.price));
-const minPrice = minBy(item => item, priceArr);
-const maxPrice = maxBy(item => item, priceArr);
-const categories = getCategory(products);
-
 const initialState = {
-  minPrice,
-  maxPrice,
+  minPrice: 0,
+  maxPrice: 0,
   discount: 0,
-  categories,
-  products,
+  categories: [],
 };
 
 export function filterReducer(state = initialState, action) {

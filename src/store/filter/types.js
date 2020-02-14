@@ -1,1 +1,1 @@
-export const CHANGE_FILTER = 'my-app/filter/CHANGE_FILTER';
+export const CHANGE_FILTER = 'filter/CHANGE_FILTER';

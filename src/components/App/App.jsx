@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import { ProductsPage } from '../pages/ProductsPage';
-import { ProductPage } from '../pages/ProductPage';
+import { ProductsPage } from '../../pages/ProductsPage';
+import { ProductPage } from '../../pages/ProductPage';
 
 import configureStore, { history } from '../../store';
 

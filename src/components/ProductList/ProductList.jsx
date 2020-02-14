@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ProductCard from 'csssr-school-product-card';
+import { formatMoney } from 'csssr-school-utils';
 
 import logRender from '../../hoc/logRender';
-import ProductCard from 'csssr-school-product-card';
 import { RatingComponent } from '../RatingComponent';
 
 import s from './styles.module.css';
@@ -13,16 +14,16 @@ const ProductItem = logRender(ProductCard);
 const ProductList = ({ items }) => {
   return (
     <div className={s.wrap}>
-      {items.map(({ id, isInStock, img, name, price, subPriceContent, rating }) => (
+      {items.map(({ id, status, img, name, price, subPriceContent, stars }) => (
         <Link to={`/${id}`} className={s.wrapItem} key={id}>
           <ProductItem
-            isInStock={isInStock}
-            img={img}
+            isInStock={status === 'IN_STOCK'}
+            img={`/assets/img/products${img}`}
             title={name}
-            price={price}
+            price={`${formatMoney(price, 0, '', ' ')} ₽`}
             subPriceContent={subPriceContent || ''}
             maxRating={5}
-            rating={rating}
+            rating={stars}
             ratingComponent={RatingComponent}
           />
         </Link>
