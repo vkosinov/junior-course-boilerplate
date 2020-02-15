@@ -15,7 +15,7 @@ const ProductList = ({ items }) => {
   return (
     <div className={s.wrap}>
       {items.map(({ id, status, img, name, price, subPriceContent, stars }) => (
-        <Link to={`/${id}`} className={s.wrapItem} key={id}>
+        <Link to={`product/${id}`} className={s.wrapItem} key={id}>
           <ProductItem
             isInStock={status === 'IN_STOCK'}
             img={`/assets/img/products${img}`}

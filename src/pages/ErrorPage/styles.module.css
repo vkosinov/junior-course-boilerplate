@@ -1,0 +1,24 @@
+.errorPage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.title {
+  margin-top: 51px;
+  font-weight: 300;
+  font-size: 100px;
+  line-height: 100px;
+  color: #323c48;
+}
+
+.img {
+  margin-top: 55px;
+}
+
+.link {
+  color: #323c48;
+}

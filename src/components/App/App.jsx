@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { ProductsPage } from '../../pages/ProductsPage';
 import { ProductPage } from '../../pages/ProductPage';
+import { ErrorPage } from '../../pages/ErrorPage/ErrorPage';
 
 import configureStore, { history } from '../../store';
 
@@ -17,8 +18,8 @@ export class App extends React.Component {
         <ConnectedRouter history={history}>
           <Switch>
             <Route path="/" exact component={ProductsPage} />
-
-            <Route path="/:id" component={ProductPage} />
+            <Route path="/product/:id" component={ProductPage} />
+            <Route component={ErrorPage} />
           </Switch>
         </ConnectedRouter>
       </Provider>
