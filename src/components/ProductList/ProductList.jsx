@@ -8,6 +8,7 @@ import logRender from '../../hoc/logRender';
 import { RatingComponent } from '../RatingComponent';
 
 import s from './styles.module.css';
+import { AddToCart } from '../../containers/AddToCart';
 
 const ProductItem = logRender(ProductCard);
 
@@ -15,18 +16,22 @@ const ProductList = ({ items }) => {
   return (
     <div className={s.wrap}>
       {items.map(({ id, status, img, name, price, subPriceContent, stars }) => (
-        <Link to={`product/${id}`} className={s.wrapItem} key={id}>
-          <ProductItem
-            isInStock={status === 'IN_STOCK'}
-            img={`/assets/img/products${img}`}
-            title={name}
-            price={`${formatMoney(price, 0, '', ' ')} ₽`}
-            subPriceContent={subPriceContent || ''}
-            maxRating={5}
-            rating={stars}
-            ratingComponent={RatingComponent}
-          />
-        </Link>
+        <div key={id} className={s.wrapItem}>
+          <Link to={`product/${id}`} className={s.link}>
+            <ProductItem
+              isInStock={status === 'IN_STOCK'}
+              img={`/assets/img/products${img}`}
+              title={name}
+              price={`${formatMoney(price, 0, '', ' ')} ₽`}
+              subPriceContent={subPriceContent || ''}
+              maxRating={5}
+              rating={stars}
+              ratingComponent={RatingComponent}
+            />
+          </Link>
+
+          <AddToCart id={id} />
+        </div>
       ))}
     </div>
   );

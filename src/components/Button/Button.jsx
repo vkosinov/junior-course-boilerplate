@@ -21,6 +21,7 @@ Button.propTypes = {
   to: PropTypes.string,
   value: PropTypes.string,
   onClick: PropTypes.func,
+  mod: PropTypes.oneOf(['primary']),
 };
 
 export default logRender(Button);

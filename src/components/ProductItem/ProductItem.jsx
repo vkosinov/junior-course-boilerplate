@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { formatMoney } from 'csssr-school-utils';
 
 import { RatingComponent } from '../RatingComponent';
+import { AddToCart } from '../../containers/AddToCart';
 
 import s from './style.module.css';
 
 export const ProductItem = ({ item }) => {
   const maxRating = 5;
-  const { name, isInStock, img, stars, price } = item;
+  const { name, isInStock, img, stars, price, id } = item;
 
   const rating = [...Array(maxRating).keys()].map(i => <RatingComponent isFilled={i + 1 <= stars} key={i} />);
 
@@ -37,6 +38,8 @@ export const ProductItem = ({ item }) => {
             <div className={s.rating}>{rating}</div>
 
             <p className={s.price}>{`${formatMoney(price, 0, '', ' ')} ₽`}</p>
+
+            <AddToCart id={id} long />
           </div>
         </div>
       </div>
