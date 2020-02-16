@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import ProductList from '../components/ProductList';
 import { Pagination } from '../components/Pagination';
-import { getActivePage } from '../store/filter/selectors';
-import { fetchProducts } from '../store/products/actions';
-import { getFilteredProduct, getActiveCategory } from '../store/products/selectors';
 import { NotFound } from '../components/NotFound';
 import { Title } from '../components/Title';
+import { getFilteredProduct, getActiveCategory } from '../store/products/selectors';
+import { getActivePage } from '../store/filter/selectors';
+import { fetchProducts } from '../store/products/actions';
 
 class List extends React.Component {
   componentDidMount() {

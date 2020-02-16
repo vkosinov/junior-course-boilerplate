@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { formatMoney } from 'csssr-school-utils';
 
 import { RatingComponent } from '../RatingComponent';
-import { AddToCart } from '../../containers/AddToCart';
+import AddToCart from '../../containers/AddToCart';
 
 import s from './style.module.css';
 

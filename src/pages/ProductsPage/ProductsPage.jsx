@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Container } from '../../components/Container';
-import Sidebar from '../../containers/Sidebar';
 import List from '../../containers/List';
+import Sidebar from '../../containers/Sidebar';
+import SidebarCart from '../../containers/SidebarCart';
 
 import s from './style.module.css';
-import { Cart } from '../../components/Cart/Cart';
 
 export const ProductsPage = () => {
   return (
@@ -20,7 +20,7 @@ export const ProductsPage = () => {
         </div>
 
         <div className={s.aside}>
-          <Cart />
+          <SidebarCart />
         </div>
       </div>
     </Container>

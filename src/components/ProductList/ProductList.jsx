@@ -8,7 +8,7 @@ import logRender from '../../hoc/logRender';
 import { RatingComponent } from '../RatingComponent';
 
 import s from './styles.module.css';
-import { AddToCart } from '../../containers/AddToCart';
+import AddToCart from '../../containers/AddToCart';
 
 const ProductItem = logRender(ProductCard);
 
