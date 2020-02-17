@@ -8,7 +8,11 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 28px;
+  padding-left: 24px;
   margin-bottom: 16px;
+  background-image: url('/assets/img/basket.svg');
+  background-position: 0 50%;
+  background-repeat: no-repeat;
 }
 
 .icon {
@@ -16,7 +20,13 @@
 }
 
 .ok {
+  display: inline-block;
   margin-left: 8px;
+  width: 24px;
+  height: 24px;
+  background-image: url('/assets/img/ok.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .wrap button {

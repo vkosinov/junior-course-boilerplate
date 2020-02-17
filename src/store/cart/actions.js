@@ -48,8 +48,6 @@ export const postCart = items => {
       .then(response => {
         if (response.ok) {
           return response.json();
-        } else {
-          dispatch(errorCart(response.message));
         }
       })
       .then(data => {

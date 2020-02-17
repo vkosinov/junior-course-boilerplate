@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Button from '../components/Button';
 import { toggleToCart } from '../store/cart/actions';
 
-const AddToCart = ({ id, long, items, toggleToCart, error, loading }) => {
+const AddToCart = ({ id, items, toggleToCart, error, loading }) => {
   const added = items.find(item => item === id);
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ const AddToCart = ({ id, long, items, toggleToCart, error, loading }) => {
     }
   };
 
-  const value = added ? `Убрать${long ? ' из корзины' : ''}` : `Добавить${long ? ' в корзину' : ''}`;
+  const value = added ? 'Убрать' : 'Добавить';
   const mod = added ? null : 'primary';
   const disabled = error || loading;
 

@@ -8,6 +8,10 @@ import { clearCart, postCart } from '../store/cart/actions';
 const SidebarCart = props => {
   const { items, clearCart, postCart, save, error, loading } = props;
 
+  if (!items.length) {
+    return null;
+  }
+
   const disabled = error || loading;
 
   const handleClick = () => {
@@ -15,14 +19,10 @@ const SidebarCart = props => {
   };
 
   return (
-    <Cart count={items.length} ok={save} error={error}>
-      {items.length !== 0 && (
-        <>
-          <Button value="Сохранить корзину" mod="primary" onClick={handleClick} disabled={disabled} />
+    <Cart count={items.length} isSuccess={save} error={error}>
+      <Button value="Сохранить корзину" mod="primary" onClick={handleClick} disabled={disabled} />
 
-          <Button value="Очистить корзину" mod="primary" onClick={clearCart} disabled={disabled} />
-        </>
-      )}
+      <Button value="Очистить корзину" mod="primary" onClick={clearCart} disabled={disabled} />
     </Cart>
   );
 };

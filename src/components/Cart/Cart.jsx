@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 
 import s from './style.module.css';
 
-export const Cart = ({ children, count = 0, ok, error }) => {
+export const Cart = ({ children, count = 0, isSuccess, error }) => {
   return (
     <div className={s.cart}>
       <div className={s.title}>
-        <img className={s.icon} src="/assets/img/basket.svg" alt="cart" />
         Корзина {count}
-        {ok === 'OK' && <img className={s.ok} src="/assets/img/ok.svg" alt="ok" />}
+        {isSuccess === 'OK' && <span className={s.ok} />}
       </div>
       <div className={s.wrap}>{children}</div>
 

@@ -39,7 +39,7 @@ export const ProductItem = ({ item }) => {
 
             <p className={s.price}>{`${formatMoney(price, 0, '', ' ')} ₽`}</p>
 
-            <AddToCart id={id} long />
+            <AddToCart id={id}/>
           </div>
         </div>
       </div>
