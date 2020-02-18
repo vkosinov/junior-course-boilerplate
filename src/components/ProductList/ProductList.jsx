@@ -8,7 +8,7 @@ import logRender from '../../hoc/logRender';
 import { RatingComponent } from '../RatingComponent';
 
 import s from './styles.module.css';
-import AddToCart from '../../containers/AddToCart';
+import AddToCartContainer from '../../containers/AddToCartContainer';
 
 const ProductItem = logRender(ProductCard);
 
@@ -30,7 +30,7 @@ const ProductList = ({ items }) => {
             />
           </Link>
 
-          <AddToCart id={id} />
+          <AddToCartContainer id={id} />
         </div>
       ))}
     </div>

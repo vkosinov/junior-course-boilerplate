@@ -10,19 +10,19 @@ import s from './style.module.css';
 export const ProductsPage = () => {
   return (
     <Container>
-      <div className={s.main}>
-        <div className={s.aside}>
+      <main className={s.main}>
+        <aside className={s.aside}>
           <Sidebar />
-        </div>
+        </aside>
 
-        <div className={s.article}>
+        <article className={s.article}>
           <List />
-        </div>
+        </article>
 
-        <div className={s.aside}>
+        <aside className={s.aside}>
           <SidebarCart />
-        </div>
-      </div>
+        </aside>
+      </main>
     </Container>
   );
 };

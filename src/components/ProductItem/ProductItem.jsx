@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { formatMoney } from 'csssr-school-utils';
 
 import { RatingComponent } from '../RatingComponent';
-import AddToCart from '../../containers/AddToCart';
+import AddToCartContainer from '../../containers/AddToCartContainer';
 
 import s from './style.module.css';
 
@@ -39,7 +39,7 @@ export const ProductItem = ({ item }) => {
 
             <p className={s.price}>{`${formatMoney(price, 0, '', ' ')} ₽`}</p>
 
-            <AddToCart id={id}/>
+            <AddToCartContainer id={id}/>
           </div>
         </div>
       </div>

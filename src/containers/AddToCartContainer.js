@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Button from '../components/Button';
 import { toggleToCart } from '../store/cart/actions';
 
-const AddToCart = ({ id, items, toggleToCart, error, loading }) => {
+const AddToCartContainer = ({ id, items, toggleToCart, error, loading }) => {
   const added = items.find(item => item === id);
 
   const handleClick = () => {
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToprops, mapDispatchToProps)(AddToCart);
+export default connect(mapStateToprops, mapDispatchToProps)(AddToCartContainer);
