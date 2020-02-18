@@ -9,7 +9,7 @@ const AddToCart = ({ id, items, toggleToCart, error, loading }) => {
 
   const handleClick = () => {
     if (added) {
-      toggleToCart([...items.filter(item => item !== id)]);
+      toggleToCart(items.filter(item => item !== id));
     } else {
       toggleToCart([...items, id]);
     }
