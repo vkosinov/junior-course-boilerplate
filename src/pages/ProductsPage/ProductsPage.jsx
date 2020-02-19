@@ -1,23 +1,28 @@
 import React from 'react';
 
 import { Container } from '../../components/Container';
-import Sidebar from '../../containers/Sidebar';
 import List from '../../containers/List';
+import Sidebar from '../../containers/Sidebar';
+import SidebarCart from '../../containers/SidebarCart';
 
 import s from './style.module.css';
 
 export const ProductsPage = () => {
   return (
     <Container>
-      <div className={s.main}>
-        <div className={s.aside}>
+      <main className={s.main}>
+        <aside className={s.aside}>
           <Sidebar />
-        </div>
+        </aside>
 
-        <div className={s.article}>
+        <article className={s.article}>
           <List />
-        </div>
-      </div>
+        </article>
+
+        <aside className={s.aside}>
+          <SidebarCart />
+        </aside>
+      </main>
     </Container>
   );
 };

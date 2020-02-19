@@ -14,3 +14,10 @@
 .wrapItem:hover {
   opacity: 0.7;
 }
+
+.link {
+  display: flex;
+  text-decoration: none;
+  margin-bottom: 16px;
+  width: 100%;
+}

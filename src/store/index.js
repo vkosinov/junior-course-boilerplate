@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 
 import { filterReducer } from './filter/reducer';
 import { productsReducer } from './products/reducer';
+import { cartReducer } from './cart/reducer';
 
 export const history = createBrowserHistory();
 
@@ -14,6 +15,7 @@ const rootReducer = history =>
     router: connectRouter(history),
     filter: filterReducer,
     products: productsReducer,
+    cart: cartReducer,
   });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,14 +1,44 @@
 .main {
   display: flex;
+  flex-direction: column;
 }
 
 .aside {
-  padding-top: 80px;
-  margin-right: 48px;
-  width: 256px;
+  min-width: 256px;
+  margin-bottom: 16px;
 }
 
 .article {
   width: 100%;
-  max-width: 736px;
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .main {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .aside {
+    width: 48%;
+    padding-top: 80px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    flex-wrap: nowrap;
+  }
+
+  .article {
+    margin: 0 48px;
+    order: 0;
+  }
+
+  .aside {
+    width: auto;
+    margin-bottom: 0;
+  }
 }
