@@ -42,3 +42,21 @@
   color: tomato;
   margin-top: 16px;
 }
+
+.item {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 24px;
+}
+
+.quantity {
+  margin-left: 16px;
+}
+
+.total {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  margin-left: 16px;
+}
