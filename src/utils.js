@@ -1,3 +1,5 @@
+import { formatMoney } from 'csssr-school-utils';
+
 export const getPrice = price => {
   return parseInt(price.slice(0, -1).replace(/\s+/g, ''));
 };
@@ -30,4 +32,12 @@ export function getCategory(items) {
   });
 
   return categorys;
+}
+
+export function getTotalPrice(products, addedId) {
+  const price = products
+    .filter(item => addedId.includes(item.id))
+    .reduce((current, item) => item.price + current, 0);
+
+  return `${formatMoney(price, 0, '', ' ')} ₽`;
 }

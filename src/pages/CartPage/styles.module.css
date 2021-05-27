@@ -1,0 +1,22 @@
+.cart {
+  display: flex;
+}
+
+.back {
+  text-decoration: none;
+  color: #323c48;
+  margin-right: 20px;
+}
+
+.aside {
+  flex-shrink: 0;
+  margin-left: 48px;
+  max-width: 256px;
+}
+
+.list {
+  flex-grow: 1;
+  display: flex;
+  max-width: 736px;
+  margin-left: 24.4%;
+}
